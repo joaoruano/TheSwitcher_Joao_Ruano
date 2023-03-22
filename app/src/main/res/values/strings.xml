@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TheSwitcher_Joao_Ruano</string>
+    <string name="app_name">Switcher App</string>
+    <string name="division">DIVISION</string>
 </resources>
