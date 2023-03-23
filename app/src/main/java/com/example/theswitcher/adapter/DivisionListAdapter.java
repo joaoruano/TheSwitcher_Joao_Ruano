@@ -1,20 +1,21 @@
 package com.example.theswitcher.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.theswitcher.MainActivity;
 import com.example.theswitcher.R;
 import com.example.theswitcher.database.SwitcherDatabase;
 import com.example.theswitcher.database.dao.DivisionDAO;
 import com.example.theswitcher.entity.HouseDivision;
+import com.example.theswitcher.fragment.LightOfDivision;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
@@ -48,6 +49,14 @@ public class DivisionListAdapter extends RecyclerView.Adapter<DivisionListAdapte
             DivisionDAO divisionDAO = db.divisionDAO();
 
             divisionDAO.updateLight(houseDivList.get(holder.getAdapterPosition()).getDivision(), isChecked);
+        });
+
+        holder.divisionText.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("HouseDivision", houseDivList.get(holder.getAdapterPosition()).getDivision());
+
+            LightOfDivision divLightFrag = new LightOfDivision();
+            ((MainActivity) context).fragmentLoader(divLightFrag, bundle, LightOfDivision.TAG);
         });
     }
 

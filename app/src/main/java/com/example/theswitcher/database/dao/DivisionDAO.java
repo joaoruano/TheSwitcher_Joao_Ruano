@@ -18,6 +18,9 @@ public interface DivisionDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAll(List<HouseDivision> houseDivision);
 
+    @Query("SELECT light FROM divisions_table WHERE division = :division")
+    boolean getLight(String division);
+
     @Query("UPDATE divisions_table SET light = :lightSwitch WHERE division = :division")
     void updateLight(String division, boolean lightSwitch);
 
