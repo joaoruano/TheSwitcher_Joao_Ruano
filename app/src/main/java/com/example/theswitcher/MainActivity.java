@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             this.finish();
         } else {
             super.onBackPressed();
+            setToolBar(View.INVISIBLE, getString(R.string.app_name));
         }
     }
 
