@@ -2,7 +2,6 @@ package com.example.theswitcher.fragment;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,14 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.theswitcher.MainActivity;
 import com.example.theswitcher.R;
 import com.example.theswitcher.database.SwitcherDatabase;
 import com.example.theswitcher.database.dao.DivisionDAO;
 
 public class LightOfDivision extends Fragment {
+
     public final static String TAG = "LightOfDivision";
     private static final String ARG_DIVISION = "HouseDivision";
+
     private String mDivParam;
     private DivisionDAO divisionDAO;
     private ImageView lightImg;
@@ -45,19 +45,12 @@ public class LightOfDivision extends Fragment {
         divTxt = view.findViewById(R.id.division_text);
         lightTxt = view.findViewById(R.id.light_text);
 
-        ActionBar actionBar = ((MainActivity) getContext()).getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(mDivParam);
-        }
-
         initUI();
 
         return view;
     }
 
     private void initUI() {
-
         if (divisionDAO.getLight(mDivParam)) {
             lightImg.setImageResource(R.drawable.light_on);
             lightTxt.setText(R.string.on);
@@ -67,6 +60,5 @@ public class LightOfDivision extends Fragment {
         }
 
         divTxt.setText(getString(R.string.your_division_light_is).replace("DIVISION", mDivParam));
-
     }
 }

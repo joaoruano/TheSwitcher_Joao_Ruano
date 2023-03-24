@@ -20,7 +20,9 @@ import com.example.theswitcher.entity.HouseDivision;
 import java.util.ArrayList;
 
 public class Divisions extends Fragment {
+
     public final static String TAG = "Divisions";
+
     private DivisionDAO divisionDAO;
     private RecyclerView recyclerView;
 
@@ -35,6 +37,7 @@ public class Divisions extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_divisions, container, false);
+
         recyclerView = view.findViewById(R.id.divisions_list);
 
         initUI();
